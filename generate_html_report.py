@@ -1,7 +1,7 @@
 """
 Generate self-contained HTML report with embedded charts.
 Run: python3 generate_html_report.py
-Output: report.html
+Output: docs/report.html
 """
 
 import base64
@@ -1196,7 +1196,8 @@ Raw data tables are in the <code>output/</code> directory.</p>
 </html>
 """
 
-    out = Path("report.html")
+    out = Path("docs/report.html")
+    out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(html, encoding="utf-8")
     size_kb = out.stat().st_size // 1024
     print(f"Generated: {out}  ({size_kb} KB)")
